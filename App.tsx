@@ -1,30 +1,30 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as SecureStore from "expo-secure-store";
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
 import * as Location from "expo-location";
 
-const TEST_KEY = "some-async-storage-key";
+const TEST_KEY = "some-secure-store-key";
 const TEST_VALUE = "Hello, world!";
 
 /**
  * Background task that executes when location changes.
  *
- * We expect to be able to access values stored in AsyncStorage,
+ * We expect to be able to access values stored in SecureStore,
  * regardless of whether app is headless or not.
  *
  */
 TaskManager.defineTask("LOCATION_TASK", async ({ executionInfo }) => {
-  const val = await AsyncStorage.getItem(TEST_KEY);
+  const val = await SecureStore.getItemAsync(TEST_KEY);
   presentLocalNotification(
     "Location updated!",
     JSON.stringify({
       appState: executionInfo.appState,
       headless: Constants.isHeadless,
-      asyncStorageVal: val,
+      secureStoreVal: val,
     })
   );
 });
@@ -67,9 +67,9 @@ export default function App() {
       <Button
         title="Start watching location"
         onPress={async () => {
-          await AsyncStorage.setItem(TEST_KEY, TEST_VALUE);
+          await SecureStore.setItemAsync(TEST_KEY, TEST_VALUE);
           await presentLocalNotification(
-            "Value saved to AsyncStorage!",
+            "Value saved to SecureStore!",
             TEST_VALUE
           );
 
