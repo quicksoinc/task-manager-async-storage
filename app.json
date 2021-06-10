@@ -2,6 +2,7 @@
   "expo": {
     "name": "task-manager-async-storage",
     "slug": "task-manager-async-storage",
+    "owner": "rivet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,11 +14,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.quicksoinc.task-manager-async-storage",
+      "infoPlist": {
+        "UIBackgroundModes": ["location", "fetch"],
+        "NSLocationWhenInUseUsageDescription": "We'll use this to make your experience better.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "We'll use this to make your experience better.",
+        "NSLocationAlwaysUsageDescription": "We'll use this to make your experience better."
+      }
     },
     "android": {
       "adaptiveIcon": {
