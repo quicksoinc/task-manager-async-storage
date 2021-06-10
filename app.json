@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "task-manager-async-storage",
-    "slug": "task-manager-async-storage",
+    "name": "task-manager-secure-store",
+    "slug": "task-manager-secure-store",
     "owner": "rivet",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,7 +17,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.quicksoinc.task-manager-async-storage",
+      "bundleIdentifier": "com.quicksoinc.task-manager-secure-store",
       "infoPlist": {
         "UIBackgroundModes": ["location", "fetch"],
         "NSLocationWhenInUseUsageDescription": "We'll use this to make your experience better.",
